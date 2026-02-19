@@ -908,6 +908,10 @@
                 font-size: 0.85rem;
                 padding: 6px 12px !important;
             }
+
+            .list-button {
+                display: none;
+            }
         }
 
         /* 小さいスマホ */
@@ -927,6 +931,10 @@
 
             #gacha-btn {
                 width: 100%;
+            }
+
+            .list-button {
+                display: none;
             }
         }
 
@@ -957,6 +965,30 @@
 
             .header-bubble-area {
                 margin: 4px 0;
+            }
+
+            .list-button {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .card-container {
+                grid-template-columns: 1fr;
+                padding: 0 10px;
+                /* 画面端に少し余白 */
+            }
+
+            .card {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                width: 90%;
+                margin: 0 auto;
+                /* 中央寄せ */
             }
         }
     </style>
@@ -1476,3 +1508,5 @@
         </button>
     </div>
 </body>
+
+</html>
