@@ -834,6 +834,101 @@
             width: calc(100%-200px);
             text-align: left;
         }
+
+        /* =====================================
+   スマホ：ヘッダー最適化（重要）
+===================================== */
+@media (max-width: 768px) {
+
+    /* 余白を固定値から解放 */
+    body {
+        padding-top: 110px;
+    }
+
+    /* ヘッダー全体を圧縮 */
+    .title {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+        padding: 8px 10px;
+    }
+
+    /* タイトルサイズ調整 */
+    .title-main {
+        font-size: 26px;
+        line-height: 1.1;
+    }
+
+    .title-sub {
+        font-size: 14px;
+    }
+
+    /* バブルを少し小さく */
+    .header-bubble-area .bubble-container {
+        width: 60px;
+        height: 60px;
+    }
+
+    /* コントロールを2段構成に */
+    .header-controls {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 6px;
+        padding: 6px 0 !important;
+    }
+
+    /* セレクト小型化 */
+    #class-select,
+    #group-select {
+        font-size: 14px;
+        padding: 4px 6px !important;
+    }
+
+    /* ガチャボタン小型化 */
+    #gacha-btn {
+        font-size: 14px;
+        padding: 6px 14px !important;
+    }
+
+    /* 状態表示も圧縮 */
+    #status-message {
+        font-size: 12px;
+        min-width: auto;
+    }
+
+    /* カード表示エリアを確実に下げる */
+    #setup-screen {
+        margin-top: 10px;
+    }
+
+    /* モードボタン位置調整 */
+    #mode-toggle-btn {
+        top: 90px;
+        left: 10px;
+        font-size: 0.85rem;
+        padding: 6px 12px !important;
+    }
+}
+
+/* 小さいスマホ */
+@media (max-width: 400px) {
+    body {
+        padding-top: 95px;
+    }
+
+    .title-main {
+        font-size: 22px;
+    }
+
+    .header-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #gacha-btn {
+        width: 100%;
+    }
+}
     </style>
 </head>
 
