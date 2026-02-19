@@ -3,18 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-
-    <!-- ★追加：スマホ最重要 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-
     <title>1年生LH用ワークシート</title>
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600&display=swap" rel="stylesheet">
-
     <style>
-        /* ===== 基本（元のまま） ===== */
         body {
             margin: 0;
             padding-top: 180px;
@@ -23,121 +16,9 @@
             background-size: 400% 400%;
             color: #e0e0e0;
             font-family: "Noto Sans JP", sans-serif;
-            min-height: 100vh;
+            min-height: 1000px;
             animation: gradientBG 50s ease infinite;
-
-            /* ★追加：横はみ出し防止 */
-            overflow-x: hidden;
         }
-
-
-        /* ===== タイトルサイズを可変に（仕様は同じ） ===== */
-        .title-main {
-            font-size: clamp(28px, 6vw, 50px);
-        }
-
-        .title-sub {
-            font-size: clamp(14px, 3vw, 25px);
-        }
-
-        /* ===== カード文字サイズも可変 ===== */
-        .initial-card.wide .card-text {
-            font-size: clamp(1.6rem, 6vw, 4rem);
-        }
-
-        /* ===== セレクト・ボタンも可変 ===== */
-        #gacha-btn {
-            font-size: clamp(14px, 3vw, 20px);
-        }
-
-        /* =====================================================
-   ▼▼▼ スマホ対応（ここが今回の核心） ▼▼▼
-   ===================================================== */
-
-        @media (max-width: 768px) {
-
-            body {
-                padding-top: 140px;
-            }
-
-            /* ヘッダーを縦並びに */
-            .title {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
-                padding: 10px;
-            }
-
-            .header-controls {
-                width: 100%;
-                justify-content: flex-start;
-                gap: 8px;
-                padding: 10px !important;
-            }
-
-            #class-select,
-            #group-select {
-                font-size: 16px;
-                padding: 6px 30px 6px 10px !important;
-            }
-
-            /* カードサイズ調整（仕様は同じ比率） */
-            .initial-card {
-                width: 110px;
-                height: 160px;
-            }
-
-            .initial-card.revealed,
-            .initial-card.vertical {
-                width: 90vw !important;
-                max-width: 420px;
-                height: auto !important;
-                min-height: 300px;
-            }
-
-            /* wide表示の横幅を画面内に収める */
-            .initial-card.wide {
-                left: 10px !important;
-                width: calc(100vw - 20px) !important;
-            }
-
-            /* 入力欄 */
-            .reframe-line {
-                font-size: 1rem !important;
-            }
-
-            /* モードボタン位置調整 */
-            #mode-toggle-btn {
-                top: 120px;
-                left: 10px;
-                font-size: 0.9rem;
-                padding: 8px 14px !important;
-            }
-
-            /* オープニング文字 */
-            #opening-overlay div[style*="font-size: 4rem"] {
-                font-size: 2rem !important;
-            }
-        }
-
-        /* ===== iPhone小画面 ===== */
-        @media (max-width: 400px) {
-
-            .initial-card.revealed,
-            .initial-card.vertical {
-                min-height: 260px;
-            }
-
-            .header-controls {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            #gacha-btn {
-                width: 100%;
-            }
-        }
-
 
         @keyframes gradientBG {
             0% {
@@ -831,175 +712,13 @@
         }
 
         .initial-card.wide .card-title {
-            width: calc(100% - 200px);
+            width: calc(100%-200px);
             text-align: left;
-        }
-
-        /* =====================================
-   スマホ：ヘッダー最適化（重要）
-===================================== */
-        @media (max-width: 768px) {
-
-            /* 余白を固定値から解放 */
-            body {
-                padding-top: 110px;
-            }
-
-            /* ヘッダー全体を圧縮 */
-            .title {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 6px;
-                padding: 8px 10px;
-            }
-
-            /* タイトルサイズ調整 */
-            .title-main {
-                font-size: 26px;
-                line-height: 1.1;
-            }
-
-            .title-sub {
-                font-size: 14px;
-            }
-
-            /* バブルを少し小さく */
-            .header-bubble-area .bubble-container {
-                width: 60px;
-                height: 60px;
-            }
-
-            /* コントロールを2段構成に */
-            .header-controls {
-                width: 100%;
-                flex-wrap: wrap;
-                gap: 6px;
-                padding: 6px 0 !important;
-            }
-
-            /* セレクト小型化 */
-            #class-select,
-            #group-select {
-                font-size: 14px;
-                padding: 4px 6px !important;
-            }
-
-            /* ガチャボタン小型化 */
-            #gacha-btn {
-                font-size: 14px;
-                padding: 6px 14px !important;
-            }
-
-            /* 状態表示も圧縮 */
-            #status-message {
-                font-size: 12px;
-                min-width: auto;
-            }
-
-            /* カード表示エリアを確実に下げる */
-            #setup-screen {
-                margin-top: 10px;
-            }
-
-            /* モードボタン位置調整 */
-            #mode-toggle-btn {
-                top: 90px;
-                left: 10px;
-                font-size: 0.85rem;
-                padding: 6px 12px !important;
-            }
-
-            .list-button {
-                display: none;
-            }
-        }
-
-        /* 小さいスマホ */
-        @media (max-width: 400px) {
-            body {
-                padding-top: 95px;
-            }
-
-            .title-main {
-                font-size: 22px;
-            }
-
-            .header-controls {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            #gacha-btn {
-                width: 100%;
-            }
-
-            .list-button {
-                display: none;
-            }
-        }
-
-        @media (max-width: 768px) {
-
-            header.title {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 8px;
-                /* ←ここで間隔を詰める */
-                padding: 10px 10px 6px 10px;
-            }
-
-            .title-group {
-                text-align: center;
-                line-height: 1.2;
-            }
-
-            .header-controls {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 6px;
-                margin-top: 4px;
-                /* ←余白を小さく */
-            }
-
-            .header-bubble-area {
-                margin: 4px 0;
-            }
-
-            .list-button {
-                display: none;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .card-container {
-                grid-template-columns: 1fr;
-                padding: 0 10px;
-                /* 画面端に少し余白 */
-            }
-
-            .card {
-                width: 100%;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .card {
-                width: 90%;
-                margin: 0 auto;
-                /* 中央寄せ */
-            }
         }
     </style>
 </head>
 
 <body>
-
-    <!-- ↓↓↓ ここから下はあなたのHTMLをそのまま貼る ↓↓↓ -->
-
-    <!-- opening-overlay 以降のコードは変更不要 -->
-    <!-- scriptもそのままでOK -->
     <div id="opening-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
     background: linear-gradient(135deg, #001220, #002d4a, #03598b, #002d4a, #001220);
     background-size: 400% 400%;
@@ -1168,19 +887,13 @@
             });
             const teacherPanel = document.getElementById('teacher-panel');
             if (teacherPanel) teacherPanel.style.display = "block";
-            if (window.innerWidth <= 768) {
-                const btn = document.getElementById('mode-toggle-btn');
-                if (btn) btn.style.display = "none";
-            }
         }
 
         function initCards() {
             const DISPLAY_CARD_COUNT = 15;
             const cardArea = document.getElementById('card-display-area');
             const totalCards = DISPLAY_CARD_COUNT;
-            const overlap = window.innerWidth <= 768
-                ? Math.min(window.innerWidth * 0.05, 18)
-                : 40;
+            const overlap = 40;
 
             for (let i = 0; i < totalCards; i++) {
                 const card = document.createElement('div');
@@ -1240,20 +953,11 @@
 
                 for (let i = 0; i < 5; i++) {
                     const card = allCards[i];
-
-                    const isMobile = window.innerWidth <= 768;
-                    // ★修正
-                    const screenWidth = window.innerWidth;
-                    const spacing = isMobile
-                        ? Math.min(screenWidth * 0.22, 80)  // 最大でも80pxまで
-                        : 270;
-
-                    const targetLeft = (i - 2) * spacing;
-                    const horizontalLeft = (i - 2) * spacing;
+                    const targetLeft = (i - 2) * 270;
+                    const horizontalLeft = (i - 2) * 270;
 
                     card.style.setProperty('--target-left', `${targetLeft}px`);
                     card.style.setProperty('--horizontal-left', `${horizontalLeft}px`);
-
                     setTimeout(() => { card.classList.add('distributed'); }, i * 300 + 20);
                 }
                 setTimeout(() => {
