@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>1年生LH用ワークシート</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding-top: 180px;
+            background: linear-gradient(135deg, #001220, #002d4a, #03598b, #002d4a, #001220);
+            background-attachment: fixed;
+            background-size: 400% 400%;
+            color: #e0e0e0;
+            font-family: "Noto Sans JP", sans-serif;
+            min-height: 1000px;
+            animation: gradientBG 50s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .ripple {
+            position: fixed;
+            border: 1.3px solid rgba(255, 255, 255, 0.8);
+            background: transparent;
+            border-radius: 50%;
+            pointer-events: none;
+            transform: scale(0);
+            animation: ripple-animation 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+            z-index: 9999;
+        }
+
+        @keyframes ripple-animation {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 0.3;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .fade-out {
+            opacity: 0;
+            transition: opacity 1s ease-out;
+            pointer-events: none;
+        }
+
+        .header-bubble-area {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            transform: translateX(-100px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            flex: 0 0 auto;
+        }
+
+        .header-bubble-area .bubble-container {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            animation: floatRect 12s ease-in-out infinite;
+        }
+
+        .morph-wrapper {
+            width: 100%;
+            height: 100%;
+            animation: morph 8s ease-in-out infinite;
+        }
+
+        .bubble {
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.01);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            background-image: radial-gradient(circle at 30% 20%,
+                    rgba(255, 255, 255, 0.3),
+                    rgba(255, 255, 255, 0) 60%,
+                    rgba(0, 191, 255, 0.1) 80%,
+                    rgba(255, 182, 193, 0.1) 100%);
+            box-shadow:
+                inset 0 10px 20px rgba(255, 255, 255, 0.2),
+                inset 5px -10px 30px rgba(255, 182, 193, 0.15),
+                inset -5px -5px 30px rgba(173, 216, 230, 0.15),
+                0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 0.5px solid rgba(255, 255, 255, 0.4);
+            border-radius: inherit;
+        }
+
+        @keyframes dropIn {
+            0% {
+                transform: translate(-100px, -250px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translate(-100px, 0);
+                opacity: 1;
+            }
+        }
+
+        .bubble-drop {
+            animation: dropIn 20.0s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+        }
+
+        .header-bubble-area {
+            opacity: 0;
+        }
+
+        @keyframes floatRect {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-6px) rotate(1deg);
+            }
+        }
+
+        @keyframes morph {
+
+            0%,
+            100% {
+                border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            }
+
+            33% {
+                border-radius: 40% 60% 70% 30% / 40% 70% 30% 60%;
+            }
+
+            66% {
+                border-radius: 55% 45% 45% 55% / 70% 40% 60% 30%;
+            }
+        }
+
+        .is-clicked {
+            animation: poyon 4s ease-out;
+        }
+
+        #start-bubble-container .bubble-container:hover .bubble {
+            background-image: radial-gradient(circle at 30% 20%,
+                    rgba(233, 211, 211, 0.613),
+                    rgba(229, 214, 214, 0) 60%,
+                    rgba(0, 191, 255, 0.1) 80%,
+                    rgba(255, 182, 193, 0.1) 100%);
+        }
+
+        @keyframes poyon {
+            0% {
+                transform: scale(1);
+            }
+
+            5% {
+                transform: scale(1.15, 0.85);
+            }
+
+            10% {
+                transform: scale(0.85, 1.15);
+            }
+
+            15% {
+                transform: scale(1.125, 0.875);
+            }
+
+            20% {
+                transform: scale(0.875, 1.125);
+            }
+
+            25% {
+                transform: scale(1.1, 0.9);
+            }
+
+            30% {
+                transform: scale(0.9, 1.1);
+            }
+
+            40% {
+                transform: scale(1.075, 0.98);
+            }
+
+            50% {
+                transform: scale(0.98, 1.02);
+            }
+
+            75% {
+                transform: scale(1.02, 0.99);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        #class-select,
+        #group-select {
+            appearance: none;
+            -webkit-appearance: none;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 0.5px solid rgba(255, 255, 255, 0.4);
+            border-radius: 10px;
+            color: white;
+            padding: 8px 35px 8px 15px !important;
+            font-size: 18px;
+            cursor: pointer;
+
+            background-image:
+                url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"),
+                radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0) 60%);
+            background-repeat: no-repeat, no-repeat;
+            background-position: right 10px center, center;
+            background-size: 20px, 100%;
+
+            transition: all 0.3s ease;
+        }
+
+        #class-select:hover,
+        #group-select:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .header-controls {
+            background: transparent !important;
+            padding: 15px 10px !important;
+            gap: 15px;
+        }
+
+        #status-message {
+            color: white !important;
+            text-shadow: 0 0 10px rgba(0, 191, 255, 0.5);
+        }
+
+        #mode-toggle-btn {
+            position: fixed;
+            top: 170px;
+            left: 20px;
+            z-index: 2000;
+            display: none;
+
+            background: rgba(255, 255, 255, 0.01);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 0.5px solid rgba(255, 255, 255, 0.4);
+            border-radius: 20px;
+            color: white;
+
+            background-image: radial-gradient(circle at 30% 20%,
+                    rgba(255, 255, 255, 0.2),
+                    rgba(255, 255, 255, 0) 60%,
+                    rgba(173, 216, 230, 0.05) 80%,
+                    rgba(255, 182, 193, 0.1) 100%);
+
+            box-shadow: inset 0 5px 15px rgba(255, 255, 255, 0.1),
+                0 5px 15px rgba(0, 0, 0, 0.2);
+
+            padding: 10px 20px !important;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        #mode-toggle-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.05);
+        }
+
+        #mode-toggle-btn.is-active {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.8);
+        }
+
+        #card-display-area {
+            margin: 0 auto;
+            height: 350px;
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: visible;
+        }
+
+        .initial-card {
+            width: 140px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.01);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+
+            border: 0.5px solid rgba(255, 255, 255, 0.4);
+            border-radius: 20px;
+
+            background-image: radial-gradient(circle at 30% 20%,
+                    rgba(255, 255, 255, 0.2),
+                    rgba(255, 255, 255, 0) 60%,
+                    rgba(173, 216, 230, 0.05) 80%,
+                    rgba(255, 182, 193, 0.1) 100%);
+            box-shadow:
+                inset 0 10px 20px rgba(255, 255, 255, 0.2),
+                inset 5px -10px 30px rgba(255, 182, 193, 0.15),
+                inset -5px -5px 30px rgba(173, 216, 230, 0.15);
+
+
+            opacity: 0.2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3em;
+            color: white;
+            position: absolute;
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+            perspective: 1000px;
+            transition:
+                left 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.6s ease,
+                background-color 0.3s ease,
+                width 0.3s ease,
+                height 0.3s ease;
+            will-change: left, transform, opacity;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.01);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: white;
+            z-index: 1000;
+            box-sizing: border-box;
+            border-bottom: 2px solid white;
+            height: auto;
+            min-height: 100px;
+        }
+
+        .title-group {
+            text-align: left;
+            flex: 0 0 auto;
+        }
+
+        .header-controls {
+            margin-left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: white;
+            padding: 15px 35px;
+            border-radius: 20px;
+            flex-wrap: wrap;
+            flex: 0 1 auto;
+        }
+
+        #gacha-btn {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 25px;
+            color: white;
+
+            background-image: radial-gradient(circle at 30% 20%,
+                    rgba(255, 255, 255, 0.4) 0%,
+                    rgba(255, 255, 255, 0) 70%);
+
+            box-shadow:
+                0 0 20px rgba(255, 255, 255, 0.1),
+                inset 0 0 10px rgba(255, 255, 255, 0.2);
+
+            padding: 12px 40px !important;
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        #gacha-btn:hover:not(:disabled) {
+            background-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+            transform: scale(1.08) translateY(-2px);
+            border-color: rgba(255, 255, 255, 1);
+        }
+
+        #gacha-btn:active:not(:disabled) {
+            transform: scale(0.95);
+            backdrop-filter: blur(5px);
+        }
+
+        #gacha-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            background: rgba(255, 255, 255, 0.02);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: none;
+        }
+
+        .title-sub {
+            font-size: 25px;
+            font-weight: 400;
+            opacity: 0.9;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .title-main {
+            font-size: 50px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .container {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .btn {
+            background: #0677b8;
+            color: white;
+            border: 2px solid #054c61;
+            padding: 10px 30px;
+            font-size: 24px;
+            font-weight: bold;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn:active {
+            transform: translateY(3px);
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        .initial-card.distributed {
+            top: 50% !important;
+            left: calc(50% + var(--target-left)) !important;
+            transform: translate(-50%, -50%);
+
+            background: transparent;
+            border: 0.5px solid rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            z-index: 9999;
+        }
+
+        .initial-card.revealed {
+            width: 230px !important;
+            border-radius: 20px;
+            height: 360px !important;
+            background: transparent !important;
+            backdrop-filter: blur(20px);
+            color: white !important;
+            border: 0.5px solid rgba(255, 255, 255, 0.4) !important;
+            transform: translate(-50%, -50%) rotateY(0deg) !important;
+        }
+
+        .initial-card.flip {
+            transform: translate(-50%, -50%) rotateY(90deg) scale(1.05) !important;
+        }
+
+        .initial-card.vertical {
+            left: calc(50% + var(--horizontal-left)) !important;
+            top: 70% !important;
+            transform: translate(-50%, -50%) !important;
+            width: 230px !important;
+            height: 360px !important;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000 !important;
+        }
+
+        .initial-card.vertical .card-content {
+            flex-direction: column !important;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .initial-card.wide {
+            left: calc(var(--btn-width, 20px) + 25px) !important;
+
+            top: var(--target-top) !important;
+            transform: translate(0, 0) !important;
+
+            width: calc(100% - var(--btn-width, 20px) - 60px) !important;
+            height: 420px !important;
+        }
+
+        .initial-card.wide .card-content {
+            flex-direction: column !important;
+            justify-content: flex-start !important;
+            align-items: flex-start !important;
+            padding: 20px !important;
+            gap: 10px !important;
+        }
+
+        .initial-card.wide .card-content div[style*="font-size:1rem"] {
+            margin-top: 0 !important;
+        }
+
+        .initial-card.wide .card-content div[style*="font-size:1.5rem"] {
+            font-size: 1.8rem !important;
+            margin: 0 0 5px 0 !important;
+            text-align: left !important;
+            width: 100% !important;
+        }
+
+        .initial-card.wide .reframe-input {
+            width: 100% !important;
+            flex-grow: 1 !important;
+            min-height: 250px !important;
+            font-size: 1.5rem;
+        }
+
+        .reframe-input {
+            width: 90%;
+            height: 150px;
+            font-size: 1.1rem;
+            padding: 10px;
+            margin: 0;
+            border-radius: 20px;
+            border: 2px solid #0677b8;
+            resize: none;
+            box-sizing: border-box;
+        }
+
+        .confirm-btn {
+            margin-top: 0;
+            width: 90%;
+            height: 45px;
+            padding: 12px 0;
+            font-size: 1.1rem;
+            font-weight: bold;
+            background-color: #d32f2f;
+            color: white;
+            border: 2px solid white;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: transform 0.15s ease, background-color 0.15s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+        }
+
+        .confirm-btn:hover {
+            background-color: #970606;
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            padding: 15px;
+            box-sizing: border-box;
+            height: 100%;
+            justify-content: space-between;
+        }
+
+        .card-title {
+            font-size: 1rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .initial-card.wide .card-title {
+            font-size: 1.5rem;
+        }
+
+        .card-text {
+            font-size: 1.5rem;
+            line-height: 1.4;
+            color: white;
+            font-weight: bold;
+            word-break: break-word;
+            white-space: pre-wrap;
+            max-height: 180px;
+            overflow-y: auto;
+            width: 100%;
+            padding-right: 5px;
+            text-align: center;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .initial-card.wide .card-text {
+            color: white;
+            font-size: 4rem;
+            margin: 10px 0;
+            width: 100%;
+            text-align: center;
+            white-space: pre-wrap;
+            max-height: 350px;
+            display: block;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .edit-btn {
+            margin-top: 10px;
+            padding: 5px 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-radius: 20px;
+            border: 2px solid #0677b8;
+            background: white;
+            color: #0677b8;
+            cursor: pointer;
+        }
+
+        .edit-btn:hover {
+            background: #eef6fb;
+        }
+
+        .initial-card.wide .edit-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 100px !important;
+            height: 40px;
+            margin: 0 !important;
+            z-index: 10;
+        }
+
+        .initial-card.wide .action-group {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .initial-card.wide .confirm-btn {
+            position: static !important;
+            width: 180px !important;
+            height: 45px;
+            margin: 0 !important;
+        }
+
+        .initial-card.wide .card-title {
+            width: calc(100%-200px);
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="opening-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+    background: linear-gradient(135deg, #001220, #002d4a, #03598b, #002d4a, #001220);
+    background-size: 400% 400%;
+    animation: gradientBG 50s ease infinite;
+
+    z-index: 10000; display: flex; flex-direction: column; justify-content: center; text-align: center;">
+
+        <div style="color: white; font-size: 1.5rem; margin-bottom: 20px; opacity: 0; animation: fadeIn 1s forwards;">
+            １年生　ロングホーム</div>
+
+        <div
+            style="color:white; font-size: 4rem; font-weight: bold; text-shadow: 0 0 20px rgba(255, 255, 255, 0.5); opacity: 0; animation: fadeIn 1s 0.5s forwards;">
+            リフレーミング</div>
+
+        <div id="start-bubble-container"
+            style="display: flex; flex-direction: column; align-items: center; margin-top: 30px;">
+            <div class="bubble-container" style="width: 150px; height: 150px; cursor: pointer;">
+                <div class="morph-wrapper">
+                    <div class="bubble"
+                        style="display: flex; justify-content: center; align-items: center; font-weight: bold; color: white; font-size: 1.2rem; cursor: pointer;">
+                        スタート
+                    </div>
+                </div>
+            </div>
+            <div style="color: white; margin-top: 20px; font-size: 1rem; animation: blink 2s infinite;">▲クリックして開始
+            </div>
+        </div>
+
+        <div style="margin-top: 40px; opacity: 0; animation: fadeIn 1s 0.5s forwards;">
+            <img src="https://lh3.googleusercontent.com/d/1S1eknnbpeFD0SyunyaVvYbaYLwaTjHTs" alt="Logo"
+                style="width: 100px; height: auto; filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));">
+        </div>
+    </div>
+    <button id="mode-toggle-btn" class="btn" onclick="toggleMode()">
+        一覧表示へ
+    </button>
+    <header class="title">
+        <div class="title-group">
+            <span class="title-sub">1年生ロングホーム用ワークシート</span><br>
+            <span class="title-main">リフレーミング</span>
+        </div>
+
+        <div class="header-bubble-area">
+            <div class="bubble-container">
+                <div class="morph-wrapper">
+                    <div class="bubble"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="header-controls">
+            <select id="class-select" style="font-size: 20px; padding: 5px 10px; border-radius: 5px;">
+                <option value="">組を選択</option>
+                <option value="1">1組</option>
+                <option value="2">2組</option>
+                <option value="3">3組</option>
+                <option value="4">4組</option>
+                <option value="5">5組</option>
+                <option value="6">6組</option>
+                <option value="7">7組</option>
+                <option value="8">8組</option>
+            </select>
+            <select id="group-select" style="font-size: 20px; padding: 5px 10px; border-radius: 5px;">
+                <option value="">班を選択</option>
+                <option value="1">1班</option>
+                <option value="2">2班</option>
+                <option value="3">3班</option>
+                <option value="4">4班</option>
+                <option value="5">5班</option>
+                <option value="6">6班</option>
+            </select>
+
+            <button id="gacha-btn" class="btn" onclick="startGacha()" disabled
+                style="opacity: 0.5; cursor: not-allowed; font-size: 16px; padding: 10px 30px;">
+                お題を引く
+            </button>
+
+            <span id="status-message" style="font-size: 14px; min-width: 150px; color: white; font-weight: bold;">
+                先生の許可をお待ちください
+            </span>
+        </div>
+    </header>
+    <div id="setup-screen" class="container">
+        <div id="card-display-area"></div>
+    </div>
+
+    <script>
+        const reframingItems = [
+            "甘えん坊な", "飽きっぽい", "あきらめが悪い", "あわてんぼう", "いい加減な", "意見が言えない",
+            "威張る", "浮き沈みが激しい", "うるさい", "怒りっぽい", "おしゃべりな", "おっとりした",
+            "おとなしい", "面白みがない", "堅苦しい", "勝ち気な", "カッとしやすい", "変わっている",
+            "頑固な", "気が強い", "気が弱い", "きつい感じの", "厳しい", "口がきつい",
+            "口が悪い", "口が軽い", "口下手な", "暗い感じ", "けじめがない", "けち",
+            "強引な", "興奮しやすい", "こだわる", "断れない", "騒がしい", "しつこい",
+            "自慢する", "地味", "消極的な", "ずうずうしい", "せっかちな", "責任感がない",
+            "外面がいい", "騙されやすい", "だらしない", "短気", "調子に乗りやすい", "冷たい",
+            "でしゃばり", "生意気", "涙もろい", "根暗", "呑気", "のんびりしている",
+            "八方美人な", "反抗的", "人付き付き合いが苦手", "人に合わせる", "1人になりやすい", "人をうらやむ",
+            "ふざける", "プライドが高い", "ぼうっとしている", "周りを気にする", "負けを認めない", "真面目",
+            "向こう見ず", "無口", "無理している", "命令しがちな", "目立たない", "目立ちたがり",
+            "面倒くさがり", "優柔不断", "よく考えない", "乱暴", "ルーズ", "わがまま"
+        ];
+
+        let isUnlocked = false;
+
+        function toggleMode() {
+            const allCards = document.querySelectorAll('.initial-card.vertical');
+            if (allCards.length === 0) return;
+            const btn = document.getElementById('mode-toggle-btn');
+            const isExpanding = !allCards[0].classList.contains('wide');
+            const btnWidth = btn.offsetWidth;
+            allCards.forEach(card => {
+                if (isExpanding) {
+                    card.style.setProperty('--btn-width', `${btnWidth}px`);
+                    card.classList.add('wide');
+                } else {
+                    card.classList.remove('wide');
+                }
+            });
+            btn.innerText = isExpanding ? "一覧表示へ" : "拡大表示へ";
+            btn.style.backgroundColor = "";
+
+            if (isExpanding) {
+                btn.classList.add('is-active');
+            } else {
+                btn.classList.remove('is-active');
+            }
+        }
+
+        function unlockDistribution() {
+            const pass = document.getElementById('admin-pass').value;
+            if (pass === "1111") {
+                isUnlocked = true;
+                alert("配布を許可しました");
+                const panel = document.getElementById('teacher-panel');
+                if (panel) panel.style.display = "none";
+                const btn = document.getElementById('gacha-btn');
+                btn.disabled = false;
+                btn.style.opacity = "1";
+                btn.style.cursor = "pointer";
+                document.getElementById('status-message').innerText = "準備完了。ボタンを押してください";
+            } else {
+                alert("パスワードが違います");
+            }
+        }
+
+        window.onload = function () {
+            const overlay = document.getElementById('opening-overlay');
+            const startBubble = document.querySelector('#start-bubble-container .bubble-container');
+            const headerBubbleArea = document.querySelector('.header-bubble-area');
+
+            startBubble.addEventListener('click', (e) => {
+                const bubbleInner = startBubble.querySelector('.bubble');
+                bubbleInner.classList.add('is-clicked');
+
+                setTimeout(() => {
+                    overlay.classList.add('fade-out');
+
+                    setTimeout(() => {
+                        initCards();
+                        overlay.style.display = "none";
+                        headerBubbleArea.style.opacity = "1";
+                        headerBubbleArea.classList.add('bubble-drop');
+                    }, 500);
+                }, 300);
+            });
+            const teacherPanel = document.getElementById('teacher-panel');
+            if (teacherPanel) teacherPanel.style.display = "block";
+        }
+
+        function initCards() {
+            const DISPLAY_CARD_COUNT = 15;
+            const cardArea = document.getElementById('card-display-area');
+            const totalCards = DISPLAY_CARD_COUNT;
+            const overlap = 40;
+
+            for (let i = 0; i < totalCards; i++) {
+                const card = document.createElement('div');
+                card.className = 'initial-card';
+                card.textContent = '?';
+
+                card.style.left = '50%';
+                card.style.opacity = '0';
+                card.style.transform = "translateX(-50%) scale(0)";
+                card.style.zIndex = i;
+                cardArea.appendChild(card);
+
+                setTimeout(() => {
+                    const offset = (i - (totalCards - 1) / 2) * overlap;
+                    card.style.left = `calc(50% + ${offset}px)`;
+                    card.style.opacity = '1';
+                    card.style.transform = "translateX(-50%) scale(1)";
+                }, i * 50);
+            }
+        }
+
+        function seedShuffle(array, seed) {
+            let m = array.length, t, i;
+            while (m) {
+                i = Math.floor(Math.abs(Math.sin(seed++)) * m--);
+                t = array[m]; array[m] = array[i]; array[i] = t;
+            }
+            return array;
+        }
+
+        function startGacha() {
+            if (!isUnlocked) return;
+            const groupNum = document.getElementById('group-select').value;
+            if (!groupNum) { alert("先にグループをお選びください"); return; }
+
+            const btn = document.getElementById('gacha-btn');
+            btn.disabled = true;
+
+            btn.style.background = "rgba(255, 255, 255, 0.1)";
+            btn.style.borderColor = "rgba(255, 255, 255, 0.3)";
+            btn.style.boxShadow = "none";
+            btn.innerText = "お題確定";
+            document.getElementById('status-message').innerText = "シャッフル中";
+            const allCards = document.querySelectorAll('.initial-card');
+            allCards.forEach(card => {
+                card.style.left = "50%";
+                card.style.transform = `translateX(-50%) rotate(0deg)`;
+            });
+            setTimeout(() => {
+                const classId = document.getElementById('class-select').value;
+                const groupPass = document.getElementById('group-select').value;
+                if (!classId || !groupPass) { alert("組と班を選択してください"); return; }
+                const seed = generateSeed(classId, groupPass);
+                const sharedShuffledList = seedShuffle([...reframingItems], seed);
+                const groupIdx = parseInt(groupNum) - 1;
+                const myWords = sharedShuffledList.slice(groupIdx * 5, (groupIdx * 5) + 5);
+
+                for (let i = 0; i < 5; i++) {
+                    const card = allCards[i];
+                    const targetLeft = (i - 2) * 270;
+                    const horizontalLeft = (i - 2) * 270;
+
+                    card.style.setProperty('--target-left', `${targetLeft}px`);
+                    card.style.setProperty('--horizontal-left', `${horizontalLeft}px`);
+                    setTimeout(() => { card.classList.add('distributed'); }, i * 300 + 20);
+                }
+                setTimeout(() => {
+                    const REVEAL_INTERVAL = 400;
+                    for (let i = 0; i < 5; i++) {
+                        setTimeout(() => {
+                            const card = allCards[i];
+                            const word = myWords[i];
+                            card.dataset.word = word;
+
+                            const rawData = localStorage.getItem(`reframe_${classId}_${groupNum}_${word}`);
+                            let savedVal = null;
+
+                            if (rawData) {
+                                try {
+                                    const parsedData = JSON.parse(rawData);
+                                    const now = Date.now();
+
+                                    const LIMIT_TIME = 30 * 60 * 1000;
+
+                                    if (now - parsedData.timestamp < LIMIT_TIME) {
+                                        savedVal = rawData;
+                                    } else {
+                                        localStorage.removeItem(`reframe_${classId}_${groupNum}_${word}`);
+                                        savedVal = null;
+                                    }
+                                } catch (e) { savedVal = null; }
+                            }
+                            card.classList.add('flip');
+                            setTimeout(() => {
+                                card.classList.remove('flip');
+                                card.classList.add('revealed');
+                                if (savedVal) {
+                                    card.dataset.value = savedVal;
+                                    let displayHtml = "";
+                                    try {
+                                        const parsed = JSON.parse(savedVal);
+                                        const items = parsed.items || parsed.text;
+                                        if (Array.isArray(items)) {
+                                            displayHtml = items
+                                                .filter(item => item.checked && item.text !== "")
+                                                .map(item => `${item.text}`)
+                                                .join('<br>');
+                                        }
+                                    } catch (e) { displayHtml = "読み込みエラー"; }
+                                    card.innerHTML = `
+                                        <div class="card-inner">
+                                            <div class="card-content">
+                                                <div class="card-title">お題: ${word}</div>
+                                                <div class="card-text">${displayHtml}</div>
+                                                <button class="edit-btn">編集</button>
+                                            </div>
+                                        </div>`;
+                                    card.querySelector('.edit-btn').addEventListener('click', () =>
+                                        renderInputView(card, word, savedVal));
+                                } else {
+                                    renderInputView(card, word, "");
+                                }
+                            }, 300);
+                        }, i * REVEAL_INTERVAL);
+                    }
+                    setTimeout(() => {
+                        const CARD_SPACING = 480;
+                        const btnToggle = document.getElementById('mode-toggle-btn');
+                        btnToggle.style.display = "block";
+                        btnToggle.classList.add('is-active');
+                        const btnWidth = btnToggle.offsetWidth;
+                        for (let i = 0; i < 5; i++) {
+                            const card = allCards[i];
+                            card.style.setProperty('--btn-width', `${btnWidth}px`);
+                            card.style.setProperty('--target-top', `${i * CARD_SPACING}px`);
+                            setTimeout(() => {
+                                card.classList.add('vertical');
+                                card.classList.add('wide');
+                            }, i * 150);
+                        }
+                        document.getElementById('status-message').innerText = "完了しました";
+                    }, (5 * REVEAL_INTERVAL) + 1000);
+                }, 1800);
+                for (let i = 5; i < allCards.length; i++) {
+                    allCards[i].style.opacity = "0";
+                    allCards[i].style.pointerEvents = "none";
+                    setTimeout(() => { allCards[i].style.display = "none"; }, 2000);
+                }
+            }, 1200);
+        }
+
+        function confirmReframing(card) {
+            const containers = card.querySelectorAll('.reframe-line-container');
+            const dataToSave = [];
+            const selectedValues = [];
+            containers.forEach(container => {
+                const checkbox = container.querySelector('.reframe-check');
+                const textInput = container.querySelector('.reframe-line');
+                const val = textInput.value.trim();
+                dataToSave.push({ text: val, checked: checkbox.checked });
+                if (checkbox.checked && val !== "") {
+                    selectedValues.push(val);
+                }
+            });
+            if (selectedValues.length === 0) {
+                alert("表示したい項目にチェックまたは入力をしてください。");
+                return;
+            }
+            const classId = document.getElementById('class-select').value;
+            const groupNum = document.getElementById('group-select').value;
+            const word = card.dataset.word;
+            const saveData = {
+                items: dataToSave,
+                timestamp: Date.now()
+            };
+            const jsonStr = JSON.stringify(saveData);
+            localStorage.setItem(`reframe_${classId}_${groupNum}_${word}`, jsonStr);
+            card.dataset.value = jsonStr;
+            const displayHtml = selectedValues.map(v => `${v}`).join('<br>');
+
+            card.querySelector('.card-inner').innerHTML = `
+                <div class="card-content">
+                    <div class="card-title">お題: ${card.dataset.word}</div>
+                    <div class="card-text">${displayHtml}</div>
+                    <button class="edit-btn">編集</button>
+                </div>`;
+            card.querySelector('.edit-btn').addEventListener('click', () =>
+                renderInputView(card, card.dataset.word, card.dataset.value)
+            );
+        }
+
+        function renderInputView(card, word, val) {
+            card.dataset.word = word;
+            card.dataset.value = val;
+            let savedItems = [];
+            if (val) {
+                try {
+                    const parsed = JSON.parse(val);
+                    savedItems = parsed.items || parsed.text || [];
+                    if (!Array.isArray(savedItems)) {
+                        savedItems = val.split('\n').map(v => ({ text: v, checked: v !== "" }));
+                    }
+                } catch (e) {
+                    savedItems = val.split('\n').map(v => ({ text: v, checked: v !== "" }));
+                }
+            }
+            let inputHtml = '<div class="input-list" style="width:100%; display:grid; grid-auto-flow: column; grid-template-rows: repeat(5, 1fr); gap: 10px; overflow-y: auto; padding-right: 5px;">';
+            for (let i = 0; i < 10; i++) {
+                const item = savedItems[i] || { text: "", checked: false };
+                const isChecked = item.checked ? "checked" : "";
+                inputHtml += `
+                <div class ="reframe-line-container" style="display: flex; align-items: center; gap: 5px;">
+                    <input type="checkbox" class="reframe-check" ${isChecked} style="width: 20px; height: 20px; cursor: pointer;">
+                    <input type="text" class="reframe-line" placeholder="${i + 1}個目" value="${item.text}"
+                    style="flex-grow: 1; padding: 8px; border-radius: 10px; border: 1px solid #0677b8; font-size: 1.1rem; box-sizing: border-box;"></div>`;
+            }
+            inputHtml += '</div>';
+            card.innerHTML = `
+                <div class="card-inner">
+                    <div class="card-content">
+                        <div style="font-size:1rem; color:white; font-weight:bold;">お題</div>
+                        <div style="text-align:center; font-size:1.5rem; font-weight:bold; width:100%;">${word}</div>
+                        <div class="action-group">
+                            <button class="confirm-btn">選択したものを確定</button>
+                            <p style ="font-size: 0.7rem; color: white; margin: 5px 0 0 0; line-height: 1.2; text-align: center;">
+                                ※チェックした項目のみ表示します。
+                            </p>
+                        </div> 
+                        ${inputHtml} 
+                    </div>
+                </div>`;
+            const inputs = card.querySelectorAll('.reframe-line');
+            inputs.forEach((input, index) => {
+                input.addEventListener('keydown', (e) => {
+                    if (e.isComposing || e.keyCode === 229) {
+                        return;
+                    }
+
+                    if (e.key === 'Enter' || e.key === 'ArrowDown') {
+                        e.preventDefault();
+                        const nextInput = inputs[index + 1];
+                        if (nextInput) {
+                            nextInput.focus();
+                        } else if (e.key === 'Enter') {
+                            card.querySelector('.confirm-btn').focus();
+                        }
+                    } else if (e.key === 'ArrowUp') {
+                        e.preventDefault();
+                        const prevInput = inputs[index - 1];
+                        if (prevInput) {
+                            prevInput.focus();
+                        }
+                    }
+                });
+            });
+            card.querySelector('.confirm-btn').addEventListener('click', () => confirmReframing(card));
+        }
+
+        function generateSeed(classId, groupPass) {
+            const key = `${classId}-${groupPass}`;
+            let seed = 0;
+            for (let i = 0; i < key.length; i++) seed += key.charCodeAt(i);
+            return seed;
+        }
+
+        document.addEventListener('click', (e) => {
+            const createWave = (delay) => {
+                setTimeout(() => {
+                    const ripple = document.createElement('div');
+                    ripple.className = 'ripple';
+                    const size = 30;
+                    ripple.style.width = ripple.style.height = `${size}px`;
+
+                    ripple.style.left = `${e.clientX - size / 2}px`;
+                    ripple.style.top = `${e.clientY - size / 2}px`;
+
+                    document.body.appendChild(ripple);
+                    ripple.addEventListener('animationend', () => {
+                        ripple.remove();
+                    });
+                }, delay);
+            };
+
+            createWave(0);
+            createWave(260);
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const bubbleContainer = document.querySelector('.header-bubble-area .bubble-container');
+            const bubbleElement = document.querySelector('.header-bubble-area .bubble');
+
+            if (bubbleContainer && bubbleElement) {
+                bubbleContainer.addEventListener('click', (e) => {
+
+                    bubbleElement.classList.remove('is-clicked');
+                    void bubbleElement.offsetWidth;
+                    bubbleElement.classList.add('is-clicked');
+                });
+
+                bubbleElement.addEventListener('animationend', (e) => {
+                    if (e.animationName === 'poyon') {
+                        bubbleElement.classList.remove('is-clicked');
+                    }
+                });
+            }
+        });
+
+    </script>
+    <div id="teacher-panel"
+        style="position: fixed; bottom: 10px; right: 10px; background: rgb(255, 255, 255); padding: 10px; border-radius: 20px; display: none;">
+        <input type="password" id="admin-pass" placeholder="パスワード"
+            style="padding: 5px; font-size: 1rem; border-radius: 10px;">
+        <button onclick="unlockDistribution()"
+            style="font-size: 1rem; font-weight: bold; border-color: #970606; background-color: #970606; color: #ffffff; border-radius: 20px; padding: 10px;">
+            配布を許可
+        </button>
+    </div>
+</body>
+
+</html>
