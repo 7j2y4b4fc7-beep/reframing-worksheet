@@ -831,144 +831,138 @@
         }
 
         .initial-card.wide .card-title {
-            width: calc(100%-200px);
+            width: calc(100% - 200px);
             text-align: left;
         }
 
         /* =====================================
    スマホ：ヘッダー最適化（重要）
 ===================================== */
-@media (max-width: 768px) {
-
-    /* 余白を固定値から解放 */
-    body {
-        padding-top: 110px;
-    }
-
-    /* ヘッダー全体を圧縮 */
-    .title {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 6px;
-        padding: 8px 10px;
-    }
-
-    /* タイトルサイズ調整 */
-    .title-main {
-        font-size: 26px;
-        line-height: 1.1;
-    }
-
-    .title-sub {
-        font-size: 14px;
-    }
-
-    /* バブルを少し小さく */
-    .header-bubble-area .bubble-container {
-        width: 60px;
-        height: 60px;
-    }
-
-    /* コントロールを2段構成に */
-    .header-controls {
-        width: 100%;
-        flex-wrap: wrap;
-        gap: 6px;
-        padding: 6px 0 !important;
-    }
-
-    /* セレクト小型化 */
-    #class-select,
-    #group-select {
-        font-size: 14px;
-        padding: 4px 6px !important;
-    }
-
-    /* ガチャボタン小型化 */
-    #gacha-btn {
-        font-size: 14px;
-        padding: 6px 14px !important;
-    }
-
-    /* 状態表示も圧縮 */
-    #status-message {
-        font-size: 12px;
-        min-width: auto;
-    }
-
-    /* カード表示エリアを確実に下げる */
-    #setup-screen {
-        margin-top: 10px;
-    }
-
-    /* モードボタン位置調整 */
-    #mode-toggle-btn {
-        top: 90px;
-        left: 10px;
-        font-size: 0.85rem;
-        padding: 6px 12px !important;
-    }
-}
-
-/* 小さいスマホ */
-@media (max-width: 400px) {
-    body {
-        padding-top: 95px;
-    }
-
-    .title-main {
-        font-size: 22px;
-    }
-
-    .header-controls {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    #gacha-btn {
-        width: 100%;
-    }
-}
-        /* =====================================
-   スマホ専用調整
-===================================== */
-@media (max-width: 768px) {
-
-    /* 一覧切替ボタンを消す */
-    #mode-toggle-btn {
-        display: none !important;
-    }
-
-    /* 常に拡大状態にするため、wide固定 */
-    .initial-card.vertical {
-        left: 10px !important;
-        width: calc(100vw - 20px) !important;
-    }
-}
         @media (max-width: 768px) {
 
-    .title {
-        padding: 6px 10px !important;
-        gap: 4px !important;
-    }
+            /* 余白を固定値から解放 */
+            body {
+                padding-top: 110px;
+            }
 
-    .title-group {
-        margin-bottom: 0;
-    }
+            /* ヘッダー全体を圧縮 */
+            .title {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 6px;
+                padding: 8px 10px;
+            }
 
-    .header-controls {
-        margin-top: 2px !important;
-        padding: 4px 0 !important;
-    }
-}
+            /* タイトルサイズ調整 */
+            .title-main {
+                font-size: 26px;
+                line-height: 1.1;
+            }
+
+            .title-sub {
+                font-size: 14px;
+            }
+
+            /* バブルを少し小さく */
+            .header-bubble-area .bubble-container {
+                width: 60px;
+                height: 60px;
+            }
+
+            /* コントロールを2段構成に */
+            .header-controls {
+                width: 100%;
+                flex-wrap: wrap;
+                gap: 6px;
+                padding: 6px 0 !important;
+            }
+
+            /* セレクト小型化 */
+            #class-select,
+            #group-select {
+                font-size: 14px;
+                padding: 4px 6px !important;
+            }
+
+            /* ガチャボタン小型化 */
+            #gacha-btn {
+                font-size: 14px;
+                padding: 6px 14px !important;
+            }
+
+            /* 状態表示も圧縮 */
+            #status-message {
+                font-size: 12px;
+                min-width: auto;
+            }
+
+            /* カード表示エリアを確実に下げる */
+            #setup-screen {
+                margin-top: 10px;
+            }
+
+            /* モードボタン位置調整 */
+            #mode-toggle-btn {
+                top: 90px;
+                left: 10px;
+                font-size: 0.85rem;
+                padding: 6px 12px !important;
+            }
+        }
+
+        /* 小さいスマホ */
+        @media (max-width: 400px) {
+            body {
+                padding-top: 95px;
+            }
+
+            .title-main {
+                font-size: 22px;
+            }
+
+            .header-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            #gacha-btn {
+                width: 100%;
+            }
+        }
+
+        /* ===== スマホ調整 ===== */
         @media (max-width: 768px) {
 
-    .initial-card {
-        width: 80px;
-        height: 120px;
-        font-size: 1.2rem;
-    }
-}
+            header.title {
+                padding: 10px 10px 5px 10px;
+            }
+
+            .title-group {
+                margin-bottom: 5px;
+            }
+
+            .title-sub {
+                font-size: 0.9rem;
+                line-height: 1.2;
+            }
+
+            .title-main {
+                font-size: 1.4rem;
+                line-height: 1.2;
+            }
+
+            .header-controls {
+                margin-top: 5px;
+                gap: 6px;
+                flex-wrap: wrap;
+            }
+
+            .header-controls select,
+            .header-controls button {
+                font-size: 14px;
+                padding: 6px 8px;
+            }
+        }
     </style>
 </head>
 
@@ -1147,9 +1141,9 @@
             const teacherPanel = document.getElementById('teacher-panel');
             if (teacherPanel) teacherPanel.style.display = "block";
             if (window.innerWidth <= 768) {
-    const btn = document.getElementById('mode-toggle-btn');
-    if (btn) btn.style.display = "none";
-}
+                const btn = document.getElementById('mode-toggle-btn');
+                if (btn) btn.style.display = "none";
+            }
         }
 
         function initCards() {
@@ -1216,11 +1210,16 @@
 
                 for (let i = 0; i < 5; i++) {
                     const card = allCards[i];
-                    const targetLeft = (i - 2) * 270;
-                    const horizontalLeft = (i - 2) * 270;
+
+                    const isMobile = window.innerWidth <= 768;
+                    const spacing = isMobile ? 120 : 270;
+
+                    const targetLeft = (i - 2) * spacing;
+                    const horizontalLeft = (i - 2) * spacing;
 
                     card.style.setProperty('--target-left', `${targetLeft}px`);
                     card.style.setProperty('--horizontal-left', `${horizontalLeft}px`);
+
                     setTimeout(() => { card.classList.add('distributed'); }, i * 300 + 20);
                 }
                 setTimeout(() => {
