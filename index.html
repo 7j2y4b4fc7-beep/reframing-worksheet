@@ -929,6 +929,46 @@
         width: 100%;
     }
 }
+        /* =====================================
+   スマホ専用調整
+===================================== */
+@media (max-width: 768px) {
+
+    /* 一覧切替ボタンを消す */
+    #mode-toggle-btn {
+        display: none !important;
+    }
+
+    /* 常に拡大状態にするため、wide固定 */
+    .initial-card.vertical {
+        left: 10px !important;
+        width: calc(100vw - 20px) !important;
+    }
+}
+        @media (max-width: 768px) {
+
+    .title {
+        padding: 6px 10px !important;
+        gap: 4px !important;
+    }
+
+    .title-group {
+        margin-bottom: 0;
+    }
+
+    .header-controls {
+        margin-top: 2px !important;
+        padding: 4px 0 !important;
+    }
+}
+        @media (max-width: 768px) {
+
+    .initial-card {
+        width: 80px;
+        height: 120px;
+        font-size: 1.2rem;
+    }
+}
     </style>
 </head>
 
@@ -1106,13 +1146,17 @@
             });
             const teacherPanel = document.getElementById('teacher-panel');
             if (teacherPanel) teacherPanel.style.display = "block";
+            if (window.innerWidth <= 768) {
+    const btn = document.getElementById('mode-toggle-btn');
+    if (btn) btn.style.display = "none";
+}
         }
 
         function initCards() {
             const DISPLAY_CARD_COUNT = 15;
             const cardArea = document.getElementById('card-display-area');
             const totalCards = DISPLAY_CARD_COUNT;
-            const overlap = 40;
+            const overlap = window.innerWidth <= 768 ? 18 : 40;
 
             for (let i = 0; i < totalCards; i++) {
                 const card = document.createElement('div');
