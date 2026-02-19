@@ -930,37 +930,33 @@
             }
         }
 
-        /* ===== スマホ調整 ===== */
         @media (max-width: 768px) {
 
             header.title {
-                padding: 10px 10px 5px 10px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+                /* ←ここで間隔を詰める */
+                padding: 10px 10px 6px 10px;
             }
 
             .title-group {
-                margin-bottom: 5px;
-            }
-
-            .title-sub {
-                font-size: 0.9rem;
-                line-height: 1.2;
-            }
-
-            .title-main {
-                font-size: 1.4rem;
+                text-align: center;
                 line-height: 1.2;
             }
 
             .header-controls {
-                margin-top: 5px;
-                gap: 6px;
+                display: flex;
                 flex-wrap: wrap;
+                justify-content: center;
+                gap: 6px;
+                margin-top: 4px;
+                /* ←余白を小さく */
             }
 
-            .header-controls select,
-            .header-controls button {
-                font-size: 14px;
-                padding: 6px 8px;
+            .header-bubble-area {
+                margin: 4px 0;
             }
         }
     </style>
@@ -1150,7 +1146,9 @@
             const DISPLAY_CARD_COUNT = 15;
             const cardArea = document.getElementById('card-display-area');
             const totalCards = DISPLAY_CARD_COUNT;
-            const overlap = window.innerWidth <= 768 ? 18 : 40;
+            const overlap = window.innerWidth <= 768
+                ? Math.min(window.innerWidth * 0.05, 18)
+                : 40;
 
             for (let i = 0; i < totalCards; i++) {
                 const card = document.createElement('div');
@@ -1212,7 +1210,11 @@
                     const card = allCards[i];
 
                     const isMobile = window.innerWidth <= 768;
-                    const spacing = isMobile ? 120 : 270;
+                    // ★修正
+                    const screenWidth = window.innerWidth;
+                    const spacing = isMobile
+                        ? Math.min(screenWidth * 0.22, 80)  // 最大でも80pxまで
+                        : 270;
 
                     const targetLeft = (i - 2) * spacing;
                     const horizontalLeft = (i - 2) * spacing;
@@ -1474,5 +1476,3 @@
         </button>
     </div>
 </body>
-
-</html>
